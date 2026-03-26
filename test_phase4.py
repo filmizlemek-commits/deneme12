@@ -37,7 +37,9 @@ def _make_test_signal(score: float = 7.5, signal_type: str = "S2") -> Signal:
 
 def _setup_test_db() -> str:
     """Geçici test veritabanı oluştur."""
-    tmp = tempfile.mktemp(suffix=".db", prefix="test_signals_")
+    # mkstemp güvenli geçici dosya oluşturur; fd'yi hemen kapatalım (SQLite kendi açar)
+    fd, tmp = tempfile.mkstemp(suffix=".db", prefix="test_signals_")
+    os.close(fd)
     # config'i test DB yolunu kullanacak şekilde güncelle
     config._config["db_path"] = tmp
     init_db()
