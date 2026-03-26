@@ -1,0 +1,44 @@
+# Python
+__pycache__/
+*.py[cod]
+*.pyo
+*.pyd
+*.so
+*.egg
+*.egg-info/
+dist/
+build/
+.eggs/
+
+# Sanal ortamlar
+.venv/
+venv/
+env/
+.env
+
+# Gizli bilgiler (asla commit etme)
+.env
+*.env
+
+# Veritabanı (çalışma zamanında oluşur)
+signals.db
+*.db
+
+# Geçici dosyalar
+/tmp/
+*.tmp
+*.log
+
+# IDE
+.idea/
+.vscode/
+*.swp
+*.swo
+
+# macOS
+.DS_Store
+
+# Test artifact
+.pytest_cache/
+htmlcov/
+.coverage

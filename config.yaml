@@ -1,0 +1,64 @@
+# --- Genel ---
+dry_run: true           # true → Telegram'a gerçek mesaj atmaz, loglar
+log_language: tr        # Tüm loglar Türkçe
+
+# --- Borsa Ağırlıkları ---
+exchange_weights:
+  binance: 1.0
+  bybit:   0.7
+  okx:     0.6
+
+# --- Coin Listesi ---
+coin_update_interval_hours: 24
+min_exchanges_required: 3       # Üç borsada da olmalı
+
+# --- WebSocket ---
+reconnect_max_attempts: 5
+reconnect_wait_seconds: 60
+heartbeat_interval_seconds: 30
+orderbook_depth: 20
+
+# --- Skorlama ---
+wall_multiplier: 3.0            # Normalin kaç katı → duvar
+price_tolerance_pct: 0.2        # Aynı seviye toleransı (%)
+confluence_bonus_both: 1.5
+confluence_bonus_single: 1.0
+exchange_bonus_per_exchange: 0.3
+funding_neutral_bonus: 0.2
+funding_high_penalty: 0.3
+funding_neutral_max: 0.05       # % (mutlak değer)
+funding_high_threshold: 0.1     # % (mutlak değer)
+volume_spike_bonus: 0.2
+volume_spike_threshold_pct: 200
+signal_min_score: 6.0
+signal_strong_score: 8.0
+signal_cooldown_minutes: 30
+proximity_threshold_pct: 0.5    # S1 sinyal mesafesi
+
+# --- Zaman Senkronizasyonu ---
+cross_exchange_time_tolerance_sec: 2  # Cross-exchange duvar eşleştirme için
+
+# --- RAM ---
+ring_buffer_minutes: 30
+ram_target_gb: 4.0
+
+# --- Telegram ---
+telegram_token: ""
+telegram_threads:
+  strong:     1    # Skor > 8.0
+  normal:     2    # Skor 6.0–8.0
+  warning:    3    # Absorpsiyon / uyarı
+  system:     4    # Bağlantı kopması vb.
+
+# --- Claude API ---
+claude_model: "claude-sonnet-4-20250514"
+claude_max_tokens: 1000
+meta_signal_score_threshold: 8.0
+meta_signal_other_bot_window_minutes: 30
+
+# --- SQLite ---
+db_path: "signals.db"
+
+# --- Health Check ---
+health_check_host: "0.0.0.0"
+health_check_port: 8080
